@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #3e3d3f;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #64c7f0;
+            color: #ffffff;
+            text-align: left;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .logo-placeholder {
+            display: inline-block;
+            height: 150px;
+            margin-right: 1rem;
+        }
+
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: #3e3d3f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ef8023;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            margin-right: 2rem;
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin: 0.5rem 0;
+        }
+
+        .sidebar a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background: #ef8023;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 3;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(270deg, #1e90ff, #00bfff, #87cefa);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        footer {
+            text-align: left;
+            padding: 1rem;
+            background: #3e3d3f;
+            color: #ffffff;
+            position: relative;
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            animation: popUp 0.5s ease-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            color: #3e3d3f;
+        }
+
+        .modal-content p {
+            font-size: 1.2rem;
+            color: #3e3d3f;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content .btn-close {
+            padding: 0.5rem 1rem;
+            background: #ef8023;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal-content .btn-close:hover {
+            background: #90d2f0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes popUp {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-placeholder">
+            <img src="Index/logo.png" alt="Logo" style="height: 150px;">
+        </div>
+        <h1 style="display: inline;"><center>CENTRO DE PREVENCIÓN INTEGRAL DEL SEXTING</center></h1>
+    </header>
+    
+    <nav>
+        <a href="Index/Somos.html">Quiénes somos</a>
+        <a href="Index/mision.html">Misión</a>
+        <a href="Index/Visión.html">Visión</a>
+        <a href="Index/Valores.html">Valores</a>
+        <a href="Index/equipo.html">Nuestro equipo</a>
+    </nav>
+    <div class="content">
+        <div class="sidebar">
+            <h2>Opciones para explorar</h2>
+            <ul>
+                <li><a href="Index/Somos.html">Quiénes somos</a></li>
+                <li><a href="Index/mision.html">Misión</a></li>
+                <li><a href="Index/Visión.html">Visión</a></li>
+                <li><a href="Index/Valores.html">Valores</a></li>
+                <li><a href="Index/equipo.html">Nuestro equipo</a></li>
+                <li><a href="javascript:void(0);" onclick="toggleServices()">Servicios</a>
+                    <ul id="services-list" style="display:none; padding-left: 20px;">
+                        <li><a href="javascript:void(0);" onclick="showModal('Acceso')">Acceso al Portal</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('talleres')">Talleres Presenciales</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('asesoria')">Asesoría Psicológica</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('campanas')">Campañas de Concientización</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('formacion')">Formación para Educadores</a></li>
+                    </ul>
+                </li>
+                <li><a href="Index/usuario.html">Acceso</a></li>
+                <li><a href="javascript:void(0);" onclick="togglePrivacyPolicy()">Política de Privacidad y Consentimiento Informado</a>
+                    <ul id="privacy-policy-list" style="display:none; padding-left: 20px;">
+                        <li><a href="javascript:void(0);" onclick="showModal('compromiso')">Compromiso con la Privacidad</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('consentimiento')">Consentimiento de Padres o Tutores</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('proteccion')">Protección de Datos Personales</a></li>
+                        <li><a href="javascript:void(0);" onclick="showModal('derechos')">Derechos de Padres y Tutores</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Bienvenido a nuestra plataforma</h2>
+            <p>Aquí encontrará información sobre nuestra misión, visión, valores, equipo profesional, los servicios que ofrecemos, cómo acceder a nuestro portal, y nuestra política de privacidad y consentimiento informado.</p>
+            <img src="img/img1.jpg" alt="Logo" style="height: 250px;"><img src="img/img2.jpg" alt="Logo" style="height: 250px;"><img src="img/img1.jpg" alt="Logo" style="height: 250px;">
+        <!-- Puedes agregar más contenido aquí -->
+        </div>
+    </div>
+    <!-- Modales -->
+    <div id="modal-compromiso" class="modal">
+        <div class="modal-content">
+            <h3>Compromiso con la Privacidad</h3>
+            <p>En el Centro de Prevención Integral del Sexting, estamos comprometidos con la protección de los datos personales de nuestros usuarios menores de edad. Esta política cumple con la Ley 1581 de 2012 sobre tratamiento de datos en Colombia.</p>
+            <button class="btn-close" onclick="closeModal('compromiso')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal-consentimiento" class="modal">
+        <div class="modal-content">
+            <h3>Consentimiento de Padres o Tutores</h3>
+            <p>Dado que nuestros usuarios incluyen menores, requerimos el consentimiento informado de padres o tutores antes de recolectar datos personales o realizar actividades educativas relacionadas con el sexting.</p>
+            <button class="btn-close" onclick="closeModal('consentimiento')">Cerrar</button>
+        </div>
+    </div>
+    <div id="modal-proteccion" class="modal">
+        <div class="modal-content">
+            <h3>Protección de Datos Personales</h3>
+            <p>Nuestro compromiso incluye:
+
+                Recolección mínima: Solo solicitamos la información necesaria.
+                
+                Acceso restringido: Los datos de los menores solo son accesibles para personal autorizado.
+                
+                Medidas de seguridad: Aplicamos controles técnicos y administrativos para proteger la información contra accesos no autorizados.</p>
+            <button class="btn-close" onclick="closeModal('proteccion')">Cerrar</button>
+        </div>
+    </div>
+    <div id="modal-derechos" class="modal">
+        <div class="modal-content">
+            <h3>Derechos de Padres y Tutores</h3>
+            <p>Los padres o tutores tienen el derecho de:
+
+                Acceder, actualizar o solicitar la eliminación de los datos de sus hijos.
+                
+                Revocar el consentimiento en cualquier momento si así lo desean.</p>
+            <button class="btn-close" onclick="closeModal('derechos')">Cerrar</button>
+        </div>
+    </div>
+    <div id="modal-Acceso" class="modal">
+        <div class="modal-content">
+            <h3>Acceso al Portal</h3>
+            <p>Te brindamos acceso exclusivo al portal donde encontrarás recursos informativos, materiales de apoyo y guías educativas para la prevención del sexting y el desarrollo psicosexual saludable.</p>
+            <button class="btn-close" onclick="closeModal('Acceso')">Cerrar</button>
+        </div>
+    </div>
+    <div id="modal-talleres" class="modal">
+        <div class="modal-content">
+            <h3>Talleres Presenciales</h3>
+            <p>Incríbete en nuestros talleres presenciales donde exploramos temas importantes como el sexting y las relaciones saludables. A través de actividades interactivas, brindamos herramientas prácticas para que estudiantes, padres y educadores aprendan a navegar la era digital de manera segura. ¡Haz clic aquí para unirte!</p>
+            <button class="btn-close" onclick="closeModal('talleres')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal-asesoria" class="modal">
+        <div class="modal-content">
+            <h3>Asesoría Psicológica</h3>
+            <p>Si necesitas apoyo emocional, comunícate con nosotros para acceder a nuestra asesoría psicológica. Nuestros profesionales están aquí para ofrecer un espacio seguro y confidencial donde los estudiantes pueden hablar sobre sus preocupaciones relacionadas con el sexting y recibir orientación adecuada. ¡Haz clic aquí para inscribirte!</p>
+            <button class="btn-close" onclick="closeModal('asesoria')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal-campanas" class="modal">
+        <div class="modal-content">
+            <h3>Campañas de Concientización</h3>
+            <p>Únete a nuestras campañas de concientización y sé parte del cambio en tu comunidad. A través de actividades interactivas y material educativo, buscamos sensibilizar sobre la importancia de la prevención del sexting. ¡Haz clic aquí para participar!</p>
+            <button class="btn-close" onclick="closeModal('campanas')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="modal-formacion" class="modal">
+        <div class="modal-content">
+            <h3>Formación para Educadores</h3>
+            <p>Inscríbete en nuestra formación para educadores y adquiere herramientas valiosas para abordar el sexting en el aula. Ofrecemos capacitaciones que te ayudarán a identificar señales de riesgo y proporcionar un ambiente seguro para tus estudiantes. ¡Haz clic aquí para más información!</p>
+            <button class="btn-close" onclick="closeModal('formacion')">Cerrar</button>
+        </div>
+    </div>
+
+<footer>
+    <p>Contáctanos:<br/>
+    Teléfono: +57-3004614410<br/>
+    Correo: prevencionsexting1@gmail.com<br/>
+    Instagram: @prevensexting<br/>
+    instagram:<a href="https://www.instagram.com/prevensexting/profilecard/?igsh=aTl1OWNkM2V2ejVz"><img src="img/ico.png" alt="Logo" style="height: 30px;"></a></p>
+    <p>&copy; 2024 CENTRO DE PREVENCIÓN INTEGRAL DEL SEXTING. Todos los derechos reservados. Designed by "Snake"</p>
+</footer>
+
+    <script>
+        // Función para abrir los modales
+        function showModal(service) {
+            var modal = document.getElementById('modal-' + service);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
+
+        // Función para cerrar los modales
+        function closeModal(service) {
+            var modal = document.getElementById('modal-' + service);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Función para mostrar y ocultar la lista de servicios
+        function toggleServices() {
+            var servicesList = document.getElementById('services-list');
+            servicesList.style.display = (servicesList.style.display === 'none' || servicesList.style.display === '') ? 'block' : 'none';
+        }
+
+        // Función para mostrar y ocultar la política de privacidad
+        function togglePrivacyPolicy() {
+            var privacyPolicyList = document.getElementById('privacy-policy-list');
+            privacyPolicyList.style.display = (privacyPolicyList.style.display === 'none' || privacyPolicyList.style.display === '') ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+

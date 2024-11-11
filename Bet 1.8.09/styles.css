@@ -1,0 +1,176 @@
+/* Reseteo de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos básicos de la página */
+body {
+    font-family: Arial, sans-serif;
+    color: #3e3d3f; /* Color del texto más oscuro */
+    line-height: 1.6;
+    background: linear-gradient(to right, #ef8023, #509fa5, #90d2f0); /* Degradado de naranja a azul claro */
+    background-size: 200% 200%;
+    animation: backgroundMove 10s linear infinite;
+}
+
+/* Estilo del encabezado */
+header {
+    background: #64c7f0; /* Azul */
+    color: #ffffff; /* Color del texto más claro para contraste */
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 1rem; /* Espacio debajo del encabezado */
+}
+
+.logo-placeholder {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem; /* Esto puede eliminarse si no deseas relleno */
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+header .back-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ffffff; /* Blanco */
+    color: #3e3d3f; /* Color del texto del botón de regreso */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+header .back-button:hover {
+    background: #90d2f0; /* Azul claro al pasar el cursor */
+    color: #3e3d3f;
+}
+
+/* Estilo principal */
+main {
+    padding: 2rem;
+}
+
+/* Estilo de la sección principal (hero) */
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    color: #3e3d3f; /* Color más oscuro para el texto del hero */
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #3e3d3f; /* Color más oscuro para el texto del hero */
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #ef8023; /* Naranja */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #509fa5; /* Azul celeste al pasar el cursor */
+}
+
+/* Estilo de las tarjetas */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+.card {
+    border-radius: 10px;
+    color: #ffffff; /* Texto blanco para las tarjetas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Adaptación en dispositivos móviles */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
+
+/* Estilo del pie de página */
+footer { 
+    background: #3e3d3f; /* Gris oscuro */
+    color: #ffffff; /* Color del texto más claro */
+    text-align: left; /* Alineación a la izquierda */
+    padding: 1rem 1rem 1rem 2rem; /* Añadir padding a la izquierda para mayor espacio */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0; /* Asegura que el pie de página se quede pegado al borde izquierdo */
+    z-index: 1000; /* Asegura que el pie de página esté por encima de otros elementos */
+}
+
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+
+
+
+
+
+

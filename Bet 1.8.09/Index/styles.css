@@ -1,0 +1,171 @@
+/* Reseteo de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos básicos de la página */
+body {
+    font-family: Arial, sans-serif;
+    color: #333333; /* Gris oscuro para el texto */
+    line-height: 1.6;
+    background: linear-gradient(to right, #FFFFFF, #F0F4F8, #F0F4F8); /* Fondo claro */
+    background-size: 200% 200%;
+    animation: backgroundMove 10s linear infinite;
+}
+
+/* Estilo del encabezado */
+header {
+    background: #64c7f0; /* Azul */
+    color: #ffffff; /* Texto claro para contraste */
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    margin-bottom: 1rem; /* Espacio debajo del encabezado */
+}
+
+.logo-placeholder {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem; /* Esto puede eliminarse si no deseas relleno */
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Estilo principal */
+main {
+    padding: 2rem;
+    margin-bottom: 100px; /* Margen inferior para el pie de página */
+}
+
+/* Estilo de la sección principal (hero) */
+.hero {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    color: #333333; /* Gris oscuro para el texto */
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #333333; /* Gris oscuro para el texto */
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #ef8023; /* Naranja */
+    color: #ffffff; /* Blanco para el texto */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #509fa5; /* Azul celeste al pasar el cursor */
+}
+
+/* Estilo de las tarjetas */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center; /* Centra las tarjetas */
+}
+
+.card {
+    flex: 0 1 30%; /* Ajusta el ancho de las tarjetas a aproximadamente 30% */
+    min-width: 250px; /* Asegura que no se hagan más pequeñas de 250px */
+    border-radius: 10px;
+    color: #ffffff; /* Texto blanco para las tarjetas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    text-align: justify; /* Justifica el texto */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Adaptación en dispositivos móviles */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
+
+/* Estilo del pie de página */
+footer {
+    background: #3e3d3f; /* Gris oscuro */
+    color: #ffffff; /* Blanco para el texto */
+    text-align: center;
+    padding: 1rem;
+    position: relative; /* Cambiado de fixed a relative */
+    width: 100%;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.salida {
+    position: absolute;
+    top: 1rem; /* Ajusta la posición vertical */
+    right: 1rem; /* Ajusta la posición horizontal */
+    padding: 0.5rem 1rem;
+    background: #f58732; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.salida:hover {
+    background: #509fa5; /* Cambia el color al pasar el cursor */
+}
+
+
+
+
+
+
+

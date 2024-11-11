@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protegiendo el Bienestar Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos comunes para todas las funcionalidades (chat, videollamada, cita) */
+        .modal, .cita-modal {
+            display: none; /* Ocultar por defecto */
+            position: fixed;
+            z-index: 9999; /* Asegura que el modal esté encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+            overflow: auto; /* Permitir scroll si es necesario */
+            animation: fadeIn 0.5s ease-out; /* Animación para la aparición */
+        }
+
+        /* Animación para la aparición del modal */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Estilo de contenido del modal */
+        .modal-content, .cita-modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 8px;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilo del chat */
+        .chat-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none; /* Ocultar el chat por defecto */
+        }
+
+        .chat-header {
+            background-color: #0c77f1;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+
+        .chat-messages {
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .chat-footer {
+            display: flex;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .chat-footer input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .chat-footer button {
+            padding: 10px;
+            background-color: #0c77f1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Estilos para los formularios */
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 15px;
+            background-color: #0c77f1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #417a8d;
+        }
+
+        .confirmation-message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border: 1px solid #d1e0e0;
+            font-size: 16px;
+        }
+
+        /* Animación para los mensajes del chat */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <div class="logo-placeholder">
+                <img src="logo.png" alt="Logo" style="height: 150px;">
+            </div>
+        </a>
+        <h1>Cuidando la integridad de nuestros niños en la era digital</h1>
+        <a href="../Inicio.html" class="btn salida">Salida</a>
+    </header>
+    <main>
+        <CENTER><h1>NECESITO AYUDA.<br/> Rutas de Atención del centro de prevención integral del sexting</h1></CENTER>
+        <div class="cards-row">
+            <div class="card" style="background-color: #519fb3;">
+                <h3>Asesoría Virtual</h3>
+                <p>• <strong>Chat en Vivo:</strong> Recibe asistencia inmediata a través de nuestro chat en tiempo real con un equipo de expertos. Disponible de lunes a domingo, de 8:00 a.m. a 8:00 p.m. <br>
+                <a href="#" id="startChat">Haz clic aquí para iniciar el chat</a></p>
+            </div>
+
+            <div class="cards-row">
+                <div class="card" style="background-color: #e4883f;">
+                    <h3>Asesoría Virtual</h3>
+                    <p>• <strong>Video llamadas:</strong> Programa una video llamada con nuestros profesionales para obtener asesoría más detallada y acompañamiento en casos complejos. Disponible de lunes a domingo, de 8:00 a.m. a 8:00 p.m., previa solicitud. <br>
+                    <a href="#" id="openVideoCallModal">Haz clic aquí para programar tu video llamada</a></p>
+                </div>
+                <div class="card" style="background-color: #519fb3;">
+                    <h3>Atención Presencial</h3>
+                    <p>• <strong>Coordinación de Citas:</strong> Si prefieres una atención más directa, puedes programar citas presenciales. <br>
+                    <a href="#" id="openCitaModal">Haz clic aquí para reservar tu cita</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Protegiendo el Bienestar Digital. Todos los derechos reservados. Designed by "Snake"</p>
+    </footer>
+
+    <!-- Chat container -->
+    <div id="chatContainer" class="chat-container">
+        <div class="chat-header">
+            Chat de Asesoría Virtual
+            <!-- Botón para cerrar el chat -->
+            <span class="close" id="closeChat" style="cursor: pointer;">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-footer">
+            <input type="text" id="userMessage" placeholder="Escribe tu mensaje..." disabled>
+            <button id="sendMessage" disabled>Enviar</button>
+        </div>
+    </div>
+
+    <!-- Modal para Videollamada -->
+    <div id="videoCallModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Programar Videollamada</h2>
+            <div class="form-container">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" placeholder="Ingresa tu correo electrónico" required>
+                <label for="time">Selecciona una hora:</label>
+                <select id="time" required>
+                    <option value="">Selecciona una hora...</option>
+                    <option value="8:00 AM">8:00 AM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                </select>
+                <button type="button" id="submitForm">Enviar Solicitud</button>
+            </div>
+            <div class="confirmation-message" id="confirmationMessage" style="display: none;">
+                <p>Tu solicitud ha sido recibida. Te contactaremos pronto para confirmar la videollamada.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Cita -->
+    <div id="citaModal" class="modal cita-modal">
+        <div class="cita-modal-content">
+            <span class="close" id="closeCitaModal">&times;</span>
+            <h2>Reservar Cita Presencial</h2>
+            <div class="form-container">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" placeholder="Ingresa tu nombre completo" required>
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" placeholder="Ingresa tu correo electrónico" required>
+                <label for="telefono">Número de Teléfono:</label>
+                <input type="text" id="telefono" placeholder="Ingresa tu número de teléfono" required>
+                <label for="hora">Selecciona la hora:</label>
+                <select id="hora" required>
+                    <option value="">Selecciona una hora...</option>
+                    <option value="8:00 AM">8:00 AM</option>
+                    <option value="9:00 AM">9:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="1:00 PM">1:00 PM</option>
+                    <option value="2:00 PM">2:00 PM</option>
+                    <option value="3:00 PM">3:00 PM</option>
+                    <option value="4:00 PM">4:00 PM</option>
+                </select>
+                <button type="button" id="submitCitaForm">Enviar Solicitud</button>
+            </div>
+            <div class="confirmation-message" id="citaConfirmationMessage" style="display: none;">
+                <p>Tu solicitud ha sido recibida y está en proceso. Te contactaremos pronto para confirmar tu cita.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función de Chat
+        document.getElementById('startChat').addEventListener('click', function() {
+            document.getElementById('chatContainer').style.display = 'block';
+            startChat();
+        });
+
+        function startChat() {
+            document.getElementById('userMessage').disabled = false;
+            document.getElementById('sendMessage').disabled = false;
+
+            let messages = [
+                '¡Hola! Soy tu asistente virtual.',
+                '¿En qué puedo ayudarte hoy?',
+                'Estoy aquí para brindarte apoyo.',
+                'Puedes preguntar lo que necesites.',
+                'No estás solo/a en esto.',
+                'Nuestros expertos están disponibles para ayudarte.',
+                'Recuerda siempre mantener la seguridad en línea.',
+                '¡Estamos aquí para ayudarte a resolver cualquier duda!'
+            ];
+
+            let messageIndex = 0;
+            let chatMessages = document.getElementById('chatMessages');
+
+            let chatInterval = setInterval(function() {
+                if (messageIndex < messages.length) {
+                    let message = document.createElement('div');
+                    message.textContent = messages[messageIndex];
+                    message.classList.add('fade-in');
+                    chatMessages.appendChild(message);
+                    messageIndex++;
+                } else {
+                    clearInterval(chatInterval);
+                }
+            }, 5000);
+        }
+
+        // Cerrar el chat
+        document.getElementById('closeChat').addEventListener('click', function() {
+            document.getElementById('chatContainer').style.display = 'none';
+        });
+
+        // Modal para Videollamada
+        var videoCallModal = document.getElementById('videoCallModal');
+        var openVideoCallModal = document.getElementById('openVideoCallModal');
+        var closeModal = document.getElementById('closeModal');
+        var submitForm = document.getElementById('submitForm');
+        var confirmationMessage = document.getElementById('confirmationMessage');
+
+        openVideoCallModal.onclick = function() {
+            videoCallModal.style.display = 'block';
+        }
+
+        closeModal.onclick = function() {
+            videoCallModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == videoCallModal) {
+                videoCallModal.style.display = 'none';
+            }
+        }
+
+        submitForm.onclick = function() {
+            var email = document.getElementById('email').value;
+            var time = document.getElementById('time').value;
+
+            if (email && time) {
+                confirmationMessage.style.display = 'block';
+                document.querySelector('.form-container').style.display = 'none';
+                setTimeout(function() {
+                    videoCallModal.style.display = 'none';
+                }, 5000);
+            } else {
+                alert('Por favor, complete todos los campos.');
+            }
+        }
+
+        // Modal para Cita
+        var citaModal = document.getElementById('citaModal');
+        var openCitaModal = document.getElementById('openCitaModal');
+        var closeCitaModal = document.getElementById('closeCitaModal');
+        var submitCitaForm = document.getElementById('submitCitaForm');
+        var citaConfirmationMessage = document.getElementById('citaConfirmationMessage');
+
+        openCitaModal.onclick = function() {
+            citaModal.style.display = 'block';
+        }
+
+        closeCitaModal.onclick = function() {
+            citaModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == citaModal) {
+                citaModal.style.display = 'none';
+            }
+        }
+
+        submitCitaForm.onclick = function() {
+            var nombre = document.getElementById('nombre').value;
+            var correo = document.getElementById('correo').value;
+            var telefono = document.getElementById('telefono').value;
+            var hora = document.getElementById('hora').value;
+
+            if (nombre && correo && telefono && hora) {
+                citaConfirmationMessage.style.display = 'block';
+                document.querySelector('.form-container').style.display = 'none';
+                setTimeout(function() {
+                    citaModal.style.display = 'none';
+                }, 5000);
+            } else {
+                alert('Por favor, complete todos los campos.');
+            }
+        }
+    </script>
+</body>
+</html>
+
+

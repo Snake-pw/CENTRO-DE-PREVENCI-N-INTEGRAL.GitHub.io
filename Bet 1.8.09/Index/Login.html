@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Asegúrate de que este archivo sea el que contiene tu CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #3e3d3f;
+            background: linear-gradient(to right, #ef8023, #00b4d8); /* Degradado de fondo */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Para que el pie de página quede al final */
+            justify-content: center; /* Centrar verticalmente */
+            align-items: center; /* Centrar horizontalmente */
+            margin: 0; /* Eliminar margen predeterminado */
+        }
+
+        header {
+            background: #64c7f0; /* Azul */
+            color: #ffffff; /* Texto blanco */
+            text-align: center; /* Centrar texto */
+            padding: 1rem;
+            width: 100%; /* Tomar todo el ancho */
+            position: absolute; /* Mantener en la parte superior */
+            top: 0;
+        }
+
+        .login {
+            background: #ffffff; /* Fondo blanco para el formulario */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+            padding: 2rem;
+            width: 300px; /* Ancho del formulario */
+            text-align: center; /* Centrar texto */
+        }
+
+        .form-group {
+            margin-bottom: 1rem; /* Espacio entre los campos */
+        }
+
+        label {
+            display: block; /* Asegurar que la etiqueta ocupe el ancho completo */
+            margin-bottom: 0.5rem; /* Espacio debajo de la etiqueta */
+            font-weight: bold; /* Negrita para las etiquetas */
+        }
+
+        input {
+            width: 100%; /* Ancho completo */
+            padding: 0.5rem; /* Espaciado interno */
+            border: 1px solid #ccc; /* Borde gris */
+            border-radius: 5px; /* Bordes redondeados */
+            font-size: 1rem; /* Tamaño de fuente */
+        }
+
+        button.btn {
+            background: #f0a139; /* Color de fondo del botón */
+            color: #ffffff; /* Texto blanco */
+            border: none; /* Sin borde */
+            padding: 0.75rem; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambiar cursor al pasar */
+            font-size: 1rem; /* Tamaño de fuente */
+            transition: background 0.3s; /* Transición suave */
+        }
+
+        button.btn:hover {
+            background: #00b4d8; /* Color de fondo al pasar el cursor */
+        }
+
+        footer {
+            text-align: left;
+            padding: 1rem;
+            background: #3e3d3f; /* Fondo gris oscuro */
+            color: #ffffff; /* Texto blanco */
+            position: absolute;
+            bottom: 0;
+            width: 100%; /* Tomar todo el ancho */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href=" ../inicio.html">
+            <div class="logo-placeholder">
+                <img src="logo.png" alt="Logo" style="height: 150px;"> <!-- Ajusta la ruta y el tamaño según necesites -->
+            </div>
+        </a>
+        <h1>Bienvenido</h1>
+    </header>
+
+    <main>
+        <section class="login">
+            <div class="login-container">
+                <h2>Iniciar sesión</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Usuario:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn"><a href=" ../Index/Index.html">Iniciar sesión</a></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contáctanos:<br/>
+        Teléfono: +57-3004614410<br/>
+        Correo: prevencionsexting1@gmail.com<br/>
+        Instagram: @prevensexting<br/>
+        instagram:<a href="https://www.instagram.com/prevensexting/profilecard/?igsh=aTl1OWNkM2V2ejVz"><img src="img/ico.png" alt="Logo" style="height: 30px;"></a></p>
+        <p>&copy; 2024 CENTRO DE PREVENCIÓN INTEGRAL DEL SEXTING. Todos los derechos reservados. Designed by "Snake"</p>
+    </footer>
+</body>
+</html>
+

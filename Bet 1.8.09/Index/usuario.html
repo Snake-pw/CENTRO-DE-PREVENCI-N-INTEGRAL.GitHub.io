@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Fondo gris claro para contraste */
+        }
+
+        .registration-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 2rem;
+            background: white; /* Fondo blanco para la tarjeta */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Para las líneas */
+            width: 100%;
+            max-width: 400px; /* Ancho máximo de la tarjeta */
+            overflow: hidden; /* Para ocultar cualquier desbordamiento */
+        }
+
+        .logo-placeholder {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .title {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+        }
+
+        .input-field {
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        .input-field input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .dropdown {
+            margin: 1rem 0;
+            width: 100%;
+        }
+
+        .dropdown select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn-submit {
+            padding: 0.5rem 1rem;
+            background: #ef8023; /* Naranja */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #509fa5; /* Azul celeste al pasar el cursor */
+        }
+
+        /* Estilos para las líneas azules fosforescentes */
+        .registration-container::before,
+        .registration-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            border: 2px dashed rgba(0, 0, 255, 0.5); /* Líneas azules */
+            z-index: -1; /* Para que las líneas queden detrás del contenido */
+            animation: pulse 1.5s infinite; /* Animación de pulso */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+        footer {
+            text-align: left;
+            padding: 1rem;
+            background: #3e3d3f; /* Fondo gris oscuro */
+            color: #ffffff; /* Texto blanco */
+            position: absolute;
+            bottom: 0;
+            width: 100%; /* Tomar todo el ancho */
+        }
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            margin: 0 1rem;
+            color: #3e3d3f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ef8023;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href=" ../inicio.html">
+            <div class="logo-placeholder">
+                <img src="logo.png" alt="Logo" style="height: 150px;"> <!-- Ajusta la ruta y el tamaño según necesites -->
+            </div>
+        </a>
+        <h1 class="title">Usted, ¿quién es?</h1>
+    </header>
+    
+    <center>
+    <main class="registration-container">
+
+        <div class="dropdown">
+            <select id="role">
+                <option value="" disabled selected>Escoja una opción</option>
+                <option value="estudiante">Estudiante</option>
+                <option value="docente">Docente</option>
+                <option value="padre">Padre de familia</option>
+            </select>
+        </div>
+        <button class="btn-submit"> <a href="Login.html">Inscribirse</a></button>
+    </main>
+</center>
+<footer>
+    <p>Contáctanos:<br/>
+    Teléfono: +57-3004614410<br/>
+    Correo: prevencionsexting1@gmail.com<br/>
+    Instagram: @prevensexting<br/>
+    instagram:<a href="https://www.instagram.com/prevensexting/profilecard/?igsh=aTl1OWNkM2V2ejVz"><img src="img/ico.png" alt="Logo" style="height: 30px;"></a></p>
+    <p>&copy; 2024 CENTRO DE PREVENCIÓN INTEGRAL DEL SEXTING. Todos los derechos reservados. Designed by "Snake"</p>
+</footer>
+</body>
+</html>
+
+
+
+

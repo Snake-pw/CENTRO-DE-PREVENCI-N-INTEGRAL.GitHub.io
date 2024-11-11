@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protegiendo el Bienestar Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilo para el Modal */
+        .modal {
+            display: none; /* Ocultar por defecto */
+            position: fixed; /* Fijado en la pantalla */
+            z-index: 1; /* Asegurarse de que se muestre encima */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Fondo translúcido */
+        }
+
+        /* Estilo del contenido del Modal */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* Ajuste para mover el modal más arriba */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Ajuste del ancho */
+            max-height: 80%; /* Limitar la altura máxima */
+            border-radius: 8px;
+            overflow-y: auto; /* Habilitar scroll si el contenido es demasiado largo */
+        }
+
+        /* Botón de Cerrar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilo del formulario dentro del modal */
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 15px;
+            background-color: #519fb3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #417a8d;
+        }
+
+        /* Estilo de los comentarios previos */
+        .previous-comments {
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        .comment {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            margin-bottom: 10px;
+        }
+
+        .comment h4 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .comment p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .comment-time {
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../Index/Index.html">
+            <div class="logo-placeholder">
+                <img src="../Index/Logo.png" alt="Logo de Protegiendo el Bienestar Digital" style="height: 150px;">
+            </div>
+        </a>
+        <h1>Protegiendo el Bienestar Digital</h1>
+        <a href="../Inicio.html" class="btn salida">Salida</a>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Redes de apoyo y conversación</h2>
+        </section>
+        <section class="content">
+            <div class="card" style="background-color: #519fb3;">
+                <h3>1.) Foros moderados</h3>
+                <p>
+                    Participa en nuestros foros donde podrás conectarte con otros padres y educadores, compartir experiencias y estrategias sobre la prevención del sexting.<br/>
+                    Haz tus preguntas y recibe respuestas de expertos y miembros de la comunidad y obtén información sobre cómo manejar situaciones relacionadas con el sexting.
+                </p>
+                <h3>¡Únete a nuestra comunidad!</h3>
+                <p>
+                    <a href="#" id="openModal">Haz clic aquí para acceder a los foros</a> y juntos podemos fortalecer la prevención del sexting.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Protegiendo el Bienestar Digital. Todos los derechos reservados. Designed by "Snake"</p>
+    </footer>
+
+    <!-- Modal con el formulario -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comenta en el Foro</h2>
+            
+            <!-- Comentarios previos -->
+            <div class="previous-comments">
+                <div class="comment">
+                    <h4>Juan Pérez</h4>
+                    <p>¿Cómo puedo hablar con mi hijo sobre el sexting sin que se sienta incómodo?</p>
+                    <div class="comment-time">Hace 2 horas</div>
+                </div>
+
+                <div class="comment">
+                    <h4>Maria García</h4>
+                    <p>Es importante tener conversaciones abiertas y sin juzgar. Así tu hijo se sentirá más cómodo compartiendo.</p>
+                    <div class="comment-time">Hace 3 horas</div>
+                </div>
+
+                <div class="comment">
+                    <h4>Ana López</h4>
+                    <p>Creo que se debe hablar de los riesgos de manera clara, pero también mostrar apoyo y entendimiento. ¡No es fácil!</p>
+                    <div class="comment-time">Hace 5 horas</div>
+                </div>
+            </div>
+            
+            <!-- Formulario de comentario -->
+            <div class="form-container">
+                <label for="name">Tu Nombre:</label>
+                <input type="text" id="name" placeholder="Ingresa tu nombre">
+                
+                <label for="message">Tu Comentario:</label>
+                <textarea id="message" rows="4" placeholder="Escribe tu comentario..."></textarea>
+                
+                <button type="button">Publicar Comentario</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener el modal
+        var modal = document.getElementById("myModal");
+
+        // Obtener el enlace que abre el modal
+        var btn = document.getElementById("openModal");
+
+        // Obtener el elemento <span> que cierra el modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Cuando el usuario haga clic en el enlace, se abrirá el modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Cuando el usuario haga clic en el <span> (x), se cierra el modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Cuando el usuario haga clic fuera del modal, se cierra el modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+

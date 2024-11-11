@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protegiendo el Bienestar Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que el body ocupe al menos la altura completa de la ventana */
+            margin: 0;
+        }
+        /* Estilos para las imágenes pequeñas */
+        .image-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .image-box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .image-box:hover {
+            transform: scale(1.2);
+        }
+        .image-box:hover img {
+            opacity: 0;
+        }
+        .image-box:hover .full-image {
+            opacity: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* Estilos para el texto que aparece al pasar el cursor */
+        .image-box:hover .image-name {
+            display: block;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+        }
+        .image-name {
+            display: none;
+        }
+
+        /* Estilos del modal (ventana emergente) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+            overflow: auto; /* Habilita el desplazamiento si la imagen es grande */
+        }
+        .modal img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        /* Estilos para el video */
+        .video-container {
+            display: flex; /* Hacer que los videos estén uno al lado del otro */
+            justify-content: center; /* Centrar los videos horizontalmente */
+            gap: 20px; /* Espacio entre los videos */
+            margin-top: 30px;
+            margin-bottom: 50px; /* Espacio entre los videos y el pie de página */
+            width: 100%;
+        }
+        video {
+            width: 48%; /* Cada video ocupará el 48% del ancho del contenedor */
+            max-width: 800px; /* Limita el tamaño máximo del video */
+            height: auto;
+            border-radius: 8px;
+        }
+        .video-title {
+            margin-top: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: left;
+            padding: 20px;
+            margin-top: auto; /* Esto empuja el footer al fondo de la página */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../Index/Index.html">
+            <div class="logo-placeholder">
+                <img src="../Index/Logo.png" alt="Logo" style="height: 150px;">
+            </div>
+        </a>
+        <h1>Protegiendo el Bienestar Digital</h1>
+        <a href="../Inicio.html" class="btn salida">Salida</a>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Artículos y guías para padres, directivos y educadores</h2>
+        </section>
+        <section class="content">
+            <!-- Espacios para las imágenes pequeñas -->
+            <div class="image-container">
+                <div class="image-box" onclick="openModal('../img/2/1. Guía para padres sobre sexting_. Guía para padres sobre sexting_.png', 'Guía para padres sobre sexting')">
+                    <img src="../img/2/1. Guía para padres sobre sexting_. Guía para padres sobre sexting_.png" alt="Imagen 1">
+                    <img src="../img/2/1. Guía para padres sobre sexting_. Guía para padres sobre sexting_.png" class="full-image" alt="Imagen 1">
+                    <div class="image-name">Guía para padres sobre sexting</div>
+                </div>
+                <div class="image-box" onclick="openModal('../img/2/2. Efectos psicológicos_. Efectos psicológicos_.png', 'Efectos psicológicos')">
+                    <img src="../img/2/2. Efectos psicológicos_. Efectos psicológicos_.png" alt="Imagen 2">
+                    <img src="../img/2/2. Efectos psicológicos_. Efectos psicológicos_.png" class="full-image" alt="Imagen 2">
+                    <div class="image-name">Efectos psicológicos</div>
+                </div>
+                <div class="image-box" onclick="openModal('../img/2/4. Que dice la ley_. Que dice la ley_.png', 'Que dice la ley')">
+                    <img src="../img/2/4. Que dice la ley_. Que dice la ley_.png" alt="Imagen 3">
+                    <img src="../img/2/4. Que dice la ley_. Que dice la ley_.png" class="full-image" alt="Imagen 3">
+                    <div class="image-name">Que dice la ley</div>
+                </div>
+                <div class="image-box" onclick="openModal('../img/2/6. Que hago yo como docente_. Que hago yo como docente_.png', 'Que hago yo como docente')">
+                    <img src="../img/2/6. Que hago yo como docente_. Que hago yo como docente_.png" alt="Imagen 4">
+                    <img src="../img/2/6. Que hago yo como docente_. Que hago yo como docente_.png" class="full-image" alt="Imagen 4">
+                    <div class="image-name">Que hago yo como docente</div>
+                </div>
+                <div class="image-box" onclick="openModal('../img/2/7. Como docente que frases positivas. Como docente que frases positivas.png', 'Como docente que frases positivas')">
+                    <img src="../img/2/7. Como docente que frases positivas. Como docente que frases positivas.png" alt="Imagen 5">
+                    <img src="../img/2/7. Como docente que frases positivas. Como docente que frases positivas.png" class="full-image" alt="Imagen 5">
+                    <div class="image-name">Como docente que frases positivas</div>
+                </div>
+                <div class="image-box" onclick="openModal('../img/2/8. Reflexión para padres_. Reflexión para padres_.png', 'Reflexión para padres')">
+                    <img src="../img/2/8. Reflexión para padres_. Reflexión para padres_.png" alt="Imagen 5">
+                    <img src="../img/2/8. Reflexión para padres_. Reflexión para padres_.png" class="full-image" alt="Imagen 5">
+                    <div class="image-name">Reflexión para padres</div>
+                </div>
+            </div>
+
+            <!-- Espacio para los videos alineados horizontalmente -->
+            <div class="video-container">
+                <div>
+                    <div class="video-title">Factores de riesgo</div>
+                    <center><video controls>
+                        <source src="../img/2/3. Factores de riesgo_. Factores de riesgo_.mp4" type="video/mp4">
+                        Tu navegador no soporta el formato de video.
+                    </video></center>
+                </div>
+                <div>
+                    <div class="video-title">Desarrollo psicosexual sano.</div>
+                <center><video controls>
+                        <source src="../img/2/5. Desarrollo psicosexual sano. Desarrollo psicosexual sano.mp4" type="video/mp4">
+                        Tu navegador no soporta el formato de video.
+                    </video></center>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para mostrar imagen completa -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Imagen completa">
+            <p id="modalTitle" style="color: white; font-size: 20px; margin-top: 10px;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Protegiendo el Bienestar Digital. Todos los derechos reservados. Designed by "Snake"</p>
+    </footer>
+
+    <script>
+        // Función para abrir el modal con la imagen completa
+        function openModal(imagePath, imageName) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            const modalTitle = document.getElementById("modalTitle");
+
+            modal.style.display = "flex";
+            modalImage.src = imagePath;
+            modalTitle.textContent = imageName;
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Cerrar el modal si se hace clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
